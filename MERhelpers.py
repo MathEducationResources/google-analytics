@@ -160,4 +160,3 @@ def plot_clicks(num_clicks):
     plt.xlabel('Days since start of term')
     plt.ylabel('Number of clicks')
     plt.title('Total number of clicks: ' + str(np.sum(myarray)))
-plt.show()
