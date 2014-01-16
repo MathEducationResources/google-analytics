@@ -222,3 +222,34 @@ def plot_question_dist(mydict, course, exam, mykey, plot_type = 'bar'):
 			plt.pie(y, labels=my_labels, startangle=90, colors=create_RGB_list(len(y)))
 			plot_title = course + ' ' + exam.replace('_',' ') + ' ' + mykey
 		plt.title(plot_title)
+
+
+def get_avg_exam_time(mydict):
+    for course in list_courses(mydict):
+        avg_exam_time[course] = {}
+        for exam in list_exams(mydict, course):
+            avg_exam_time[course][exam] = 0
+            questions = list_questions(mydict, course, exam)
+            for question in questions:
+                avg_exam_time[course][exam] += mydict[course][exam][question]['avg_time']
+            try:
+                avg_exam_time[course][exam] /= len(questions)
+            except ZeroDivisionError:
+                del avg_exam_time[course][exam]
+        for courses in avg_exam_time.keys():
+            if not avg_exam_time[courses]:
+                del avg_exam_time[courses]
+    return avg_exam_time
+
+def print_avg_exam_time(avg_exam_time):
+    y = np.zeros(len(avg_exam_time[course]))
+    my_label = []
+    for num,exam in enumerate(avg_exam_time[course]):
+        y[num] = avg_exam_time[course][exam]
+        my_label.append(exam.replace('_',' '))
+    plt.bar(range(len(y)), y, align='center', color=create_RGB_list(len(y)))
+    plt.gca().set_xticks(range(len(y)))
+    plt.gca().set_xticklabels(my_label)
+    plt.xticks(rotation='vertical')
+    plt.ylabel('Average time per question')
+    plt.title(course)
