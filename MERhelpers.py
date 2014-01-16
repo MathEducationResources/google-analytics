@@ -159,3 +159,66 @@ def plot_clicks(num_clicks):
     plt.xlabel('Days since start of term')
     plt.ylabel('Number of clicks')
     plt.title('Total number of clicks: ' + str(np.sum(myarray)))
+
+def fraction_course_exam_question_by_key(mydict,mykey):
+    total_course_time = 0
+    total_exam_time = 0
+    total_question_time = 0
+    for course in list_courses(mydict):
+        try:
+            total_course_time += mydict[course][mykey]
+        except KeyError:
+            pass
+        for exam in list_exams(mydict,course):
+            try:
+                total_exam_time += mydict[course][exam][mykey]
+            except KeyError:
+                pass
+            for question in list_questions(mydict,course,exam):
+                try:
+                    total_question_time += mydict[course][exam][question][mykey]
+                except KeyError:
+                    pass
+    total_time = float(total_course_time + total_exam_time + total_question_time)
+    return total_course_time/total_time, total_exam_time/total_time, total_question_time/total_time
+
+
+def plot_question_dist(mydict, course, exam, mykey, plot_type = 'bar'):
+	question_keys = sorted(list_questions(mydict, course, exam))
+	if len(question_keys) > 1:
+		y = np.zeros(len(question_keys))
+		my_labels = []
+		for num, question in enumerate(question_keys):
+			value = mydict[course][exam][question][mykey]
+			y[num] = value
+			label_question = question.replace('_','').replace('Question','Q')
+			if 'pageviews' == mykey:
+				label_data = str(value)
+				ylabel = 'Total page views'
+			elif 'unique_pageviews' == mykey:
+				label_data = str(value)
+				ylabel  = 'Unique page views'
+			elif 'avg_time' == mykey:
+				label_data = '[' + str(int(value/60)) + 'm' + str(int(value%60)) + 's]'
+				ylabel = 'Average time spent in s'
+			elif 'pages_per_visit' == mykey:
+				NotImplemented
+			elif 'visit_duration' == mykey:
+				label_data = '[' + str(int(value/60/60)) + 'h' + str(int((value%(60*60))/60)) + 'm]'
+				ylabel = 'Total time spent in h'
+				y[num] /= 3600
+			if 'bar' == plot_type:
+				my_labels.append(label_question)
+			elif 'pie' == plot_type:
+				my_labels.append(label_question + ' ' + label_data)
+		if 'bar' == plot_type:
+			plt.bar(range(len(y)),y,align='center',color=create_RGB_list(len(y)))
+			plt.gca().set_xticks(range(len(y)))
+			plt.gca().set_xticklabels(my_labels)
+			plt.xticks(rotation='vertical')
+			plt.ylabel(ylabel)
+			plot_title = course + ' ' + exam.replace('_',' ')
+		elif 'pie' == plot_type:
+			plt.pie(y, labels=my_labels, startangle=90, colors=create_RGB_list(len(y)))
+			plot_title = course + ' ' + exam.replace('_',' ') + ' ' + mykey
+		plt.title(plot_title)
