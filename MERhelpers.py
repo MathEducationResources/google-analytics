@@ -28,10 +28,10 @@ def hms_to_sec(mytime):
 
 def add_to_target_dict(line,target_dict):
     page,pageviews,unique_pageviews,unique_visitors,avg_time,pages_per_visit,visit_duration = line.strip().split(',')
-    target_dict['pageviews'] = pageviews
-    target_dict['unique_pageviews'] = unique_pageviews
+    target_dict['pageviews'] = int(pageviews)
+    target_dict['unique_pageviews'] = int(unique_pageviews)
     target_dict['avg_time'] = hms_to_sec(avg_time)
-    target_dict['pages_per_visit'] = pages_per_visit
+    target_dict['pages_per_visit'] = float(pages_per_visit)
     target_dict['visit_duration'] = hms_to_sec(visit_duration)
     return target_dict
 
@@ -138,7 +138,6 @@ def plot_visit_duration_dist(page_info, course, style='pie', include_subpages=Tr
         plt.gca().set_xticks(range(len(y)))
         plt.gca().set_xticklabels(my_labels)
         plt.ylabel('Total pageview time in hours')
-
     plt.title(course + ' - Total pageview time per exam')
 
 def data_to_info_clicks(filename):
