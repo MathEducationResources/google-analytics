@@ -10,6 +10,6 @@ Contact info: mer-wiki (at) math (dot) ubc (dot) ca
 
 #### Check out the current report:
 
-nbviewer.ipython.org/url/https://github.com/MER-wiki/google-analytics/global-dict.ipynb?create=1
+http://nbviewer.ipython.org/github/MER-wiki/google-analytics/blob/master/global_dict.ipynb
 
 
