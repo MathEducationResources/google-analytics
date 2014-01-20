@@ -200,7 +200,8 @@ def plot_question_dist(mydict, course, exam, mykey, plot_type = 'bar'):
 				ylabel  = 'Unique page views'
 			elif 'avg_time' == mykey:
 				label_data = '[' + str(int(value/60)) + 'm' + str(int(value%60)) + 's]'
-				ylabel = 'Average time spent in s'
+				ylabel = 'Average time spent in m'
+				y[num] /= 60
 			elif 'pages_per_visit' == mykey:
 				NotImplemented
 			elif 'visit_duration' == mykey:
@@ -253,3 +254,101 @@ def print_avg_exam_time(avg_exam_time):
     plt.xticks(rotation='vertical')
     plt.ylabel('Average time per question')
     plt.title(course)
+
+
+def plot_total_clicks_time_series(filename):
+	num_clicks = []
+	date_list = []
+	for line in open(filename,'r'):
+		line = line.strip()
+		line = line.split(',')
+		date_list.append(line[0])
+		num_clicks.append(int(line[1]))
+
+	x_axis=[]
+	x_axis.append(date_list.index('1/1/12'))
+	x_axis.append(date_list.index('5/1/12'))
+	x_axis.append(date_list.index('9/1/12'))
+	x_axis.append(date_list.index('1/1/13'))
+	x_axis.append(date_list.index('5/1/13'))
+	x_axis.append(date_list.index('9/1/13'))
+
+	myarray = np.asarray(num_clicks)
+	plt.plot(myarray)
+	plt.ylabel('Number of clicks')
+	plt.title('Total number of clicks: ' + str(np.sum(myarray)))
+	plt.gca().set_xticks(x_axis)
+	plt.gca().set_xticklabels(['Jan 12','May 12','Sep 12','Jan 13','May 13','Sep 13'])
+
+	## Exams  ##
+	# DEC 2013
+	index = date_list.index('12/10/13')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index-35, 65000, 'Math 100')
+
+	index = date_list.index('12/11/13')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index+5, 50000, 'Math 102')
+
+	index = date_list.index('12/11/13')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index+5, 35000, 'Math 104')
+
+	index = date_list.index('12/11/13')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index+5, 20000, 'Math 110')
+
+	# APR 2013
+	index = date_list.index('4/15/13')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index-35, 40000, 'Math 152')
+
+	index = date_list.index('4/19/13')
+	plt.plot([index,index],[0,70000],'g-')
+	plt.text(index-38, 65000, 'Math 103', color='g')
+
+	index = date_list.index('4/22/13')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index+5, 50000, 'Math 101')
+
+	index = date_list.index('4/22/13')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index+5, 35000, 'Math 105')
+
+	index = date_list.index('4/22/13')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index+5, 20000, 'Math 110')
+
+	# DEC 2012
+	index = date_list.index('12/14/12')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index+5, 65000, 'Math 102')
+
+	index = date_list.index('12/5/12')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index-35, 50000, 'Math 100')
+
+	index = date_list.index('12/5/12')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index-35, 35000, 'Math 104')
+
+	index = date_list.index('12/5/12')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index-35, 20000, 'Math 110')
+
+	# APR 2012
+	index = date_list.index('4/16/12')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index+5, 65000, 'Math 152')
+
+	index = date_list.index('4/11/12')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index-35, 50000, 'Math 101')
+
+	index = date_list.index('4/11/12')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index-35, 35000, 'Math 103')
+
+	index = date_list.index('4/11/12')
+	plt.plot([index,index],[0,70000],'k-')
+	plt.text(index-35, 20000, 'Math 105')
