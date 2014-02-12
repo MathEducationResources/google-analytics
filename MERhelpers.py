@@ -12,8 +12,10 @@ def line_type(line):
         return 'header'
     if 1 == line.count('/'):
         return 'header'
-    if 2 == line.count('/'):
+    if not 'Science:' in line:
         return 'clicks'
+#    if 2 == line.count('/'):
+#        return 'clicks'
     if 3 == line.count('/'):
         return 'course'
     if 4 == line.count('/'):
@@ -146,18 +148,39 @@ def plot_visit_duration_dist(page_info, course, style='pie', include_subpages=Tr
         plt.ylabel('Total pageview time in hours')
     plt.title(course + ' - Total pageview time per exam')
 
-def data_to_info_clicks(filename):
+def data_to_dict_clickdates_clickscount(filename):
     f = open(filename,'r')
     page_info = {}
-    clicks_time_series = []
+    click_dates = []
+    click_counts = []
     for line in f:
         if line_type(line) == 'header':
             continue
         elif line_type(line) == 'exam' or line_type(line) == 'course' or line_type(line) == 'question':
             page_info = add_page_info(page_info,line,line_type(line))
         elif line_type(line) == 'clicks':
-            clicks_time_series.append(int(line.split(',')[1].strip()))
-    return page_info,clicks_time_series
+            date,count = line.strip().split(',')
+            click_dates.append(date)
+            click_counts.append(int(count))
+    return page_info,click_dates,click_counts
+
+def clean_dict(mydict, valid_course_numbers):
+    for course in list_courses(mydict):
+        if not course in valid_course_numbers:
+            del mydict[course]
+            continue
+        for exam in list_exams(mydict,course):
+            if not len(exam) > 4:
+                del mydict[course][exam]
+                continue
+            if 'logid' in exam:
+                del mydict[course][exam]
+                continue
+            for question in list_questions(mydict,course,exam):
+                if not len(question) > 4:
+                    del mydict[course][exam][question]
+                if 'logid' in question:
+                    del mydict[course][exam][question]
 
 def plot_clicks(num_clicks):
     myarray = np.asarray(num_clicks)
@@ -269,15 +292,7 @@ def print_total_exam_time(total_exam_time, course):
     plt.title(course)
 
 
-def plot_total_clicks_time_series(filename):
-	num_clicks = []
-	date_list = []
-	for line in open(filename,'r'):
-		line = line.strip().replace('"','')
-		line = line.split(',')
-		date_list.append(line[0].strip())
-		num_clicks.append(int(line[1].strip()))
-
+def plot_total_clicks_time_series(date_list, num_clicks):
 	x_axis=[]
 	x_axis.append(date_list.index('1/1/12'))
 	x_axis.append(date_list.index('5/1/12'))
