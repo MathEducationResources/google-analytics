@@ -98,7 +98,7 @@ def list_questions(page_info, course, exam):
     list_of_questions = []
     sorted_keys = sorted(page_info[course][exam].keys())
     for key in sorted_keys:
-        if type({}) == type(page_info[course][exam][key]):
+        if type({}) == type(page_info[course][exam][key]) and 'Question' in key:
             list_of_questions.append(key)
     return list_of_questions
 
@@ -220,8 +220,8 @@ def plot_question_dist(mydict, course, exam, mykey, plot_type = 'bar'):
 		num = 0
 		for question in question_keys:
 			value = mydict[course][exam][question][mykey]
-			#disregard pages with less than 5 unique pageviews. High chance these are typos
-			if 5 > mydict[course][exam][question]['unique_pageviews']:
+			#disregard pages with less than too few unique pageviews. High chance these are typos
+			if 10 > mydict[course][exam][question]['unique_pageviews']:
 				continue
 			y.append(float(value))
 			label_question = question.replace('_','').replace('Question','Q')
