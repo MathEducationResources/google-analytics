@@ -1,0 +1,7 @@
+The ipython notebook does not run as is, some technical python code was removed to prettify the output.
+
+To get the html output from the ipynb input, run
+
+$ipython nbconvert --to html mer_py_google_analytics.ipynb --stdout | python ipy_hide_input > output-hidden.html
+
+If you want to make changes, get missing lines from ../../mer_py_google_analytics.ipynb
