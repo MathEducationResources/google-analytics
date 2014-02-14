@@ -310,6 +310,30 @@ def plot_total_clicks_time_series(date_list, num_clicks):
 	plt.gca().set_xticklabels(['Jan 12','May 12','Sep 12','Jan 13','May 13','Sep 13','Jan 14'])
 
 	## Exams  ##
+	# APR 2014
+	try:
+		index = date_list.index('04/25/14')
+		plt.plot([index,index],[0,70000],'k:')
+		plt.text(index-35, 65000, 'Math 101')
+
+		index = date_list.index('04/24/14')
+		plt.plot([index,index],[0,70000],'k:')
+		plt.text(index+5, 50000, 'Math 103')
+
+		index = date_list.index('04/24/14')
+		plt.plot([index,index],[0,70000],'k:')
+		plt.text(index+5, 35000, 'Math 105')
+
+		index = date_list.index('04/24/14')
+		plt.plot([index,index],[0,70000],'k:')
+		plt.text(index+5, 20000, 'Math 110')
+
+		index = date_list.index('04/16/14')
+		plt.plot([index,index],[0,70000],'k:')
+		plt.text(index+5, 20000, 'Math 152')
+        except ValueError: #data does not include April 2014 data
+                pass
+
 	# DEC 2013
 	index = date_list.index('12/10/13')
 	plt.plot([index,index],[0,70000],'k:')
