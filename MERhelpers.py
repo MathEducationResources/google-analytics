@@ -46,6 +46,7 @@ def add_course_info(page_info,line,course_name):
 
 def add_exam_info(page_info,line,course_name,exam_name):
     if not page_info.has_key(course_name):
+
         page_info[course_name] = {}
     if not page_info[course_name].has_key(exam_name):
         page_info[course_name][exam_name] = {}
@@ -304,10 +305,11 @@ def plot_total_clicks_time_series(date_list, num_clicks):
 
 	myarray = np.asarray(num_clicks)
 	plt.plot(myarray)
-	plt.ylabel('Number of clicks')
-	plt.title('Total number of clicks: ' + str(np.sum(myarray)))
+	plt.ylabel('Number of clicks (in thousands)', size='x-large')
+	plt.title('Total number of clicks: ' + str(np.sum(myarray)), size='x-large')
 	plt.gca().set_xticks(x_axis)
-	plt.gca().set_xticklabels(['Jan 12','May 12','Sep 12','Jan 13','May 13','Sep 13','Jan 14'])
+	plt.gca().set_xticklabels(['Jan 12','May 12','Sep 12','Jan 13','May 13','Sep 13','Jan 14'],size='x-large')
+	plt.gca().set_yticklabels(['0','10','20','30','40','50','60','70'],size='x-large')
 
 	## Exams  ##
 	# APR 2014
@@ -337,71 +339,71 @@ def plot_total_clicks_time_series(date_list, num_clicks):
 	# DEC 2013
 	index = date_list.index('12/10/13')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index-35, 65000, 'Math 100')
+	plt.text(index+5, 65000, 'Math 100', size='x-large')
 
 	index = date_list.index('12/11/13')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index+5, 50000, 'Math 102')
+	plt.text(index+5, 50000, 'Math 102', size='x-large')
 
 	index = date_list.index('12/11/13')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index+5, 35000, 'Math 104')
+	plt.text(index+5, 35000, 'Math 104', size='x-large')
 
 	index = date_list.index('12/11/13')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index+5, 20000, 'Math 110')
+	plt.text(index+5, 20000, 'Math 110', size='x-large')
 
 	# APR 2013
 	index = date_list.index('4/15/13')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index-35, 40000, 'Math 152')
+	plt.text(index-65, 40000, 'Math 152', size='x-large')
 
 	index = date_list.index('4/19/13')
 	plt.plot([index,index],[0,70000],'g:')
-	plt.text(index-38, 65000, 'Math 103', color='g')
+	plt.text(index+5, 65000, 'Math 103', color='g', size='x-large')
 
 	index = date_list.index('4/22/13')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index+5, 50000, 'Math 101')
+	plt.text(index+5, 50000, 'Math 101', size='x-large')
 
 	index = date_list.index('4/22/13')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index+5, 35000, 'Math 105')
+	plt.text(index+5, 35000, 'Math 105', size='x-large')
 
 	index = date_list.index('4/22/13')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index+5, 20000, 'Math 110')
+	plt.text(index+5, 20000, 'Math 110', size='x-large')
 
 	# DEC 2012
 	index = date_list.index('12/14/12')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index+5, 65000, 'Math 102')
+	plt.text(index+5, 65000, 'Math 102', size='x-large')
 
 	index = date_list.index('12/5/12')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index-35, 50000, 'Math 100')
+	plt.text(index-65, 50000, 'Math 100', size='x-large')
 
 	index = date_list.index('12/5/12')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index-35, 35000, 'Math 104')
+	plt.text(index-65, 35000, 'Math 104', size='x-large')
 
 	index = date_list.index('12/5/12')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index-35, 20000, 'Math 110')
+	plt.text(index-65, 20000, 'Math 110', size='x-large')
 
 	# APR 2012
 	index = date_list.index('4/16/12')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index+5, 65000, 'Math 152')
+	plt.text(index+5, 65000, 'Math 152', size='x-large')
 
 	index = date_list.index('4/11/12')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index-35, 50000, 'Math 101')
+	plt.text(index-65, 50000, 'Math 101', size='x-large')
 
 	index = date_list.index('4/11/12')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index-35, 35000, 'Math 103')
+	plt.text(index-65, 35000, 'Math 103', size='x-large')
 
 	index = date_list.index('4/11/12')
 	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index-35, 20000, 'Math 105')
+	plt.text(index-65, 20000, 'Math 105', size='x-large')
