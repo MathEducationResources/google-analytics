@@ -314,8 +314,8 @@ def plot_total_clicks_time_series(date_list, num_clicks):
 	## Exams  ##
 	# APR 2014
 	index = date_list.index('4/25/14')
-	plt.plot([index,index],[0,70000],'k:')
-	plt.text(index+5, 65000, 'Math 101', size='x-large')
+	plt.plot([index,index],[0,70000],'g:')
+	plt.text(index+5, 65000, 'Math 101', color='g', size='x-large')
 
 	index = date_list.index('4/24/14')
 	plt.plot([index,index],[0,70000],'k:')
