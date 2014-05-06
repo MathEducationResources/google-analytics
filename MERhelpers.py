@@ -292,6 +292,26 @@ def print_total_exam_time(total_exam_time, course):
     plt.ylabel('Total time per exam in m, using average for each question')
     plt.title(course)
 
+def load_delta_t(filename):
+
+	import csv
+	with open(filename,'r') as delt:
+    		reader = csv.reader(delt, delimiter=',')
+	    	row = reader.next()
+    		while len(row) <= 1:
+        		row = reader.next()
+    		num_cols = len(row)
+    		labels = row;
+   		row = reader.next();
+    		delta_t = [];
+    		while len(row) == num_cols:
+        		try:
+            			delta_t.extend([int(row[0])]*int(row[1]))
+            			row = reader.next()
+        		except ValueError:
+            			print row
+            			row = reader.next()
+	return delta_t
 
 def plot_total_clicks_time_series(date_list, num_clicks):
 	x_axis=[]
