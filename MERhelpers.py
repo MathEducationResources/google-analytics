@@ -287,9 +287,9 @@ def print_total_exam_time(total_exam_time, course):
     y = np.asarray(y)
     plt.bar(range(len(y)), y, align='center', color=create_RGB_list(len(y)))
     plt.gca().set_xticks(range(len(y)))
-    plt.gca().set_xticklabels(my_label)
-    plt.xticks(rotation='vertical')
-    plt.ylabel('Total time per exam in m, using average for each question')
+    plt.gca().set_xticklabels(my_label,size='small')
+    plt.xticks(rotation='80',size='small')
+    plt.ylabel('Total time per exam (min)\n based on average \n for each question',size='small')
     plt.title(course)
 
 def load_delta_t(filename):
@@ -309,7 +309,6 @@ def load_delta_t(filename):
             			delta_t.extend([int(row[0])]*int(row[1]))
             			row = reader.next()
         		except ValueError:
-            			print row
             			row = reader.next()
 	return delta_t
 
