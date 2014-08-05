@@ -171,17 +171,30 @@ def clean_dict(mydict, valid_course_numbers):
             del mydict[course]
             continue
         for exam in list_exams(mydict,course):
-            if not len(exam) > 4:
-                del mydict[course][exam]
-                continue
-            if 'logid' in exam:
+            if not is_valid_exam(exam):
                 del mydict[course][exam]
                 continue
             for question in list_questions(mydict,course,exam):
-                if not len(question) > 4:
+                if not is_valid_question(question):
                     del mydict[course][exam][question]
-                if 'logid' in question:
-                    del mydict[course][exam][question]
+
+# Returns a boolean telling whether an exam is valid based on its name.
+def is_valid_exam(exam):
+    cond1 = len(exam) > 4		# Exam name is longer than 4 chars
+    cond2 = True			# Last four chars are integers
+    for ch in exam[-4:]:
+        try:
+            type(int(ch))
+        except ValueError:
+            cond2 = False
+    cond3 = not 'logid' in exam		# 'logid' is NOT in the exam name.
+    return cond1 and cond2 and cond3	#IF all above cond. are satisfied, return TRUE
+
+# Returns a boolean indicating if a question is valid based on the URL
+def is_valid_question(question):
+    cond1 = len(question) > 4		# Question is longer than 4 chars
+    cond2 = not 'logid' in question	# 'logid' is NOT in the question
+    return cond1 and cond2		# IF all above cond. are satisfied, return TRUE
 
 def plot_clicks(num_clicks):
     myarray = np.asarray(num_clicks)
