@@ -14,4 +14,4 @@ Contact info: mer-wiki (at) math (dot) ubc (dot) ca
 
 [In-depth comparison of courses, exams, and exam-questions](http://nbviewer.ipython.org/github/MER-wiki/google-analytics/blob/master/MER_notebook2.ipynb)
 
-[Correlation analysis of easiness rating and time spent on question page](http://nbviewer.ipython.org/github/MER-wiki/google-analytics/blob/master/Correlation_avg_time_spent_to_avg_rating.ipynb)
+[Correlation analysis of easiness rating, time spent on question page and exam score](http://nbviewer.ipython.org/github/MER-wiki/google-analytics/blob/master/Correlation_avg_time_spent_to_avg_rating_to_exam_score.ipynb)
