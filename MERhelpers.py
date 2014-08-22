@@ -338,6 +338,7 @@ def plot_total_clicks_time_series(date_list, num_clicks):
 	myarray = np.asarray(num_clicks)
 	plt.plot(myarray)
 	plt.ylabel('Number of clicks (in thousands)', size='x-large')
+	plt.xlabel('Date', size='x-large')
 	plt.title('Total number of clicks: ' + str(np.sum(myarray)), size='x-large')
 	plt.gca().set_xticks(x_axis)
 	plt.gca().set_xticklabels(['Jan 12','May 12','Sep 12','Jan 13','May 13','Sep 13','Jan 14'],size='x-large')
