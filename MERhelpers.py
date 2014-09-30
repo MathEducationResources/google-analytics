@@ -362,7 +362,7 @@ def plot_pie_chart_time_spent_on_course(my_dict,thres,colors):
     plt.title('Total time users spent on all wiki pages by course ' + " [" + str(round(np.sum(total_time)/60.0/60.0/1000,1)) + " kh]",size='26')
 
 # Plot the number of clicks per day in time
-def plot_total_clicks_time_series(date_list, num_clicks, logarithmic):
+def plot_total_clicks_time_series(date_list, num_clicks, logarithmic,showExamLabels):
     x_axis=[]
     x_axis.append(date_list.index('1/1/12'))
     x_axis.append(date_list.index('5/1/12'))
@@ -392,96 +392,119 @@ def plot_total_clicks_time_series(date_list, num_clicks, logarithmic):
     # APR 2014
     index = date_list.index('4/25/14')
     plt.plot([index,index],[1,70000],'g:')
-    plt.text(index+5, 65000, 'Math 101', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 65000, 'Math 101', size='x-large')
 
     index = date_list.index('4/24/14')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index+5, 50000, 'Math 103', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 50000, 'Math 103', size='x-large')
 
     index = date_list.index('4/24/14')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index+5, 35000, 'Math 105', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 35000, 'Math 105', size='x-large')
 
     index = date_list.index('4/24/14')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index+5, 20000, 'Math 110', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 20000, 'Math 110', size='x-large')
 
     index = date_list.index('4/16/14')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index-65, 42500, 'Math 152', size='x-large')
+    if showExamLabels:
+        plt.text(index-65, 42500, 'Math 152', size='x-large')
 
     index = date_list.index('4/16/14')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index-65, 27500, 'Math 215', size='x-large')
+    if showExamLabels:
+        plt.text(index-65, 27500, 'Math 215', size='x-large')
 
     # DEC 2013
     index = date_list.index('12/10/13')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index+5, 65000, 'Math 100', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 65000, 'Math 100', size='x-large')
 
     index = date_list.index('12/11/13')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index+5, 50000, 'Math 102', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 50000, 'Math 102', size='x-large')
 
     index = date_list.index('12/11/13')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index+5, 35000, 'Math 104', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 35000, 'Math 104', size='x-large')
 
     index = date_list.index('12/11/13')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index+5, 20000, 'Math 110', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 20000, 'Math 110', size='x-large')
 
     # APR 2013
     index = date_list.index('4/15/13')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index-65, 40000, 'Math 152', size='x-large')
+    if showExamLabels:
+        plt.text(index-65, 40000, 'Math 152', size='x-large')
 
     index = date_list.index('4/19/13')
     plt.plot([index,index],[1,70000],'g:')
-    plt.text(index+5, 65000, 'Math 103', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 65000, 'Math 103', size='x-large')
 
     index = date_list.index('4/22/13')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index+5, 50000, 'Math 101', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 50000, 'Math 101', size='x-large')
 
     index = date_list.index('4/22/13')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index+5, 35000, 'Math 105', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 35000, 'Math 105', size='x-large')
 
     index = date_list.index('4/22/13')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index+5, 20000, 'Math 110', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 20000, 'Math 110', size='x-large')
 
     # DEC 2012
     index = date_list.index('12/14/12')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index+5, 65000, 'Math 102', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 65000, 'Math 102', size='x-large')
 
     index = date_list.index('12/5/12')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index-65, 50000, 'Math 100', size='x-large')
+    if showExamLabels:
+        plt.text(index-65, 50000, 'Math 100', size='x-large')
 
     index 
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index-65, 35000, 'Math 104', size='x-large')
+    if showExamLabels:
+        plt.text(index-65, 35000, 'Math 104', size='x-large')
 
     index = date_list.index('12/5/12')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index-65, 20000, 'Math 110', size='x-large')
+    if showExamLabels:
+        plt.text(index-65, 20000, 'Math 110', size='x-large')
 
     # APR 2012
     index = date_list.index('4/16/12')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index+5, 65000, 'Math 152', size='x-large')
+    if showExamLabels:
+        plt.text(index+5, 65000, 'Math 152', size='x-large')
 
     index = date_list.index('4/11/12')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index-65, 50000, 'Math 101', size='x-large')
+    if showExamLabels:
+        plt.text(index-65, 50000, 'Math 101', size='x-large')
 
     index = date_list.index('4/11/12')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index-65, 35000, 'Math 103', size='x-large')
+    if showExamLabels:
+        plt.text(index-65, 35000, 'Math 103', size='x-large')
 
     index = date_list.index('4/11/12')
     plt.plot([index,index],[1,70000],'k:')
-    plt.text(index-65, 20000, 'Math 105', size='x-large')
+    if showExamLabels:
+        plt.text(index-65, 20000, 'Math 105', size='x-large')
