@@ -389,6 +389,23 @@ def plot_total_clicks_time_series(date_list, num_clicks, logarithmic,showExamLab
     plt.gca().set_xticklabels(['Jan 12','May 12','Sep 12','Jan 13','May 13','Sep 13','Jan 14'],size='x-large')
 
     ## Exams  ##
+    
+    # DEC 2014
+    # MATH100: 5/12/14
+    # MATH101: 6/12/14
+    # MATH102: 6/12/14
+    # MATH104: 6/12/14
+    # MATH105: 6/12/14
+    # MATH110: 5/12/14
+    # MATH200: 6/12/14
+    # MATH215: 15/12/14
+    # MATH220: 2/12/14
+    # MATH221: 17/12/14
+    # MATH257: 6/12/14
+    # MATH307: 13/12/14
+    # MATH312: 10/12/14
+    # MATH437: 8/12/14
+    
     # APR 2014
     index = date_list.index('4/25/14')
     plt.plot([index,index],[1,70000],'g:')
